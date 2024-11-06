@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:13:09 by rben-ais          #+#    #+#             */
-/*   Updated: 2024/11/04 21:50:26 by rben-ais         ###   ########.fr       */
+/*   Updated: 2024/11/05 15:30:18 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	count_words(char const *s, char c)
 		{
 			count++;
 			while (s[i] && s[i] != c)
-			i++;
+				i++;
 		}
 	}
 	return (count);
@@ -48,7 +48,7 @@ static char	**free_array(char **array, size_t size)
 	size_t	i;
 
 	i = 0;
-	while ( i < size)
+	while (i < size)
 	{
 		free(array[i]);
 		i++;
@@ -57,26 +57,19 @@ static char	**free_array(char **array, size_t size)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_cut(const char	*s, char c, char **result, size_t word_count)
 {
-	char	**result;
-	size_t	word_count;
 	size_t	i;
 	size_t	j;
+	size_t	len;
 
-	if (!s)
-		return (NULL);
-	word_count = count_words(s, c);
-	result = (char **)malloc((word_count + 1) * sizeof(char *));
-	if (!result)
-		return (NULL);
 	i = 0;
 	j = 0;
 	while (i < word_count)
 	{
 		while (s[j] == c)
 			j++;
-		size_t len = word_length(&s[j], c);
+		len = word_length(&s[j], c);
 		result[i] = (char *)malloc((len + 1) * sizeof(char));
 		if (!result[i])
 			return (free_array(result, i));
@@ -88,27 +81,16 @@ char	**ft_split(char const *s, char c)
 	return (result);
 }
 
-#include <stdio.h>
-
-int main(void)
+char	**ft_split(char const *s, char c)
 {
-	char const *str = "reda nadi bzf ";
-	char delimiter = ' ';
-	char **result;
-	size_t i;
+	char	**result;
+	size_t	word_count;
 
-	result = ft_split(str, delimiter);
+	if (!s)
+		return (NULL);
+	word_count = count_words(s, c);
+	result = (char **)malloc((word_count + 1) * sizeof(char *));
 	if (!result)
-	{
-		printf("Error: Memory allocation failed.\n");
-		return (1);
-	}
-	while(result[i])
-	{
-		printf("Result[%zu]: %s\n", i, result[i]);
-		free(result[i]);
-		i++;
-	}
-	free(result);
-	return (0);
+		return (NULL);
+	return (ft_cut(s, c, result, word_count));
 }
