@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rben-ais <rben-ais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 21:45:44 by rben-ais          #+#    #+#             */
-/*   Updated: 2024/11/06 08:08:39 by rben-ais         ###   ########.fr       */
+/*   Updated: 2024/11/07 22:04:28 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static char	*modriga(char *str, long num, int digit_count)
 		nega = 1;
 		num = -num;
 	}
-	while (digit_count - 1 >= nega)
+	while (digit_count >= nega)
 	{
-		str[digit_count - 1] = '0' + (num % 10);
+		str[digit_count] = '0' + (num % 10);
 		num /= 10;
 		digit_count--;
 	}
@@ -61,9 +61,9 @@ char	*ft_itoa(int n)
 
 	num = n;
 	digit_count = ft_count(num);
-	str = (char *)malloc((digit_count + 1) * sizeof(char));
+	str = (char *)malloc((digit_count + 1));
 	if (!str)
 		return (NULL);
 	str[digit_count] = '\0';
-	return (modriga(str, num, digit_count));
+	return (modriga(str, num, digit_count - 1));
 }

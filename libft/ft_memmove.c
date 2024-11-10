@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 10:22:08 by rben-ais          #+#    #+#             */
-/*   Updated: 2024/11/02 21:50:45 by rben-ais         ###   ########.fr       */
+/*   Updated: 2024/11/07 23:02:57 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	d = (unsigned char *)dst;
 	s = (const unsigned char *)src;
-	if (!d && !s)
-		return (NULL);
 	if (d == s || len == 0)
 		return (dst);
 	overlap(d, s, len);

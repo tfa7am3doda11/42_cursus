@@ -6,13 +6,13 @@
 /*   By: rben-ais <rben-ais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 11:32:19 by rben-ais          #+#    #+#             */
-/*   Updated: 2024/11/03 19:21:25 by rben-ais         ###   ########.fr       */
+/*   Updated: 2024/11/07 21:58:32 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	space_signe(const char *str, int *i, int *signe)
+static void	space_signe(const char *str, int *i, int *signe)
 {
 	*i = 0;
 	*signe = 1;
@@ -24,7 +24,6 @@ static int	space_signe(const char *str, int *i, int *signe)
 			*signe = -1;
 		(*i)++;
 	}
-	return (*i);
 }
 
 int	ft_atoi(const char *str)

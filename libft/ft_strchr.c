@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 15:51:33 by rben-ais          #+#    #+#             */
-/*   Updated: 2024/10/25 09:11:15 by rben-ais         ###   ########.fr       */
+/*   Updated: 2024/11/07 21:53:25 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s || c == '\0')
+	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}
+	if (*s == (char)c)
+		return ((char *)s);
 	return (NULL);
 }
