@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 20:14:23 by rben-ais          #+#    #+#             */
-/*   Updated: 2024/11/10 22:49:53 by rben-ais         ###   ########.fr       */
+/*   Updated: 2024/11/15 16:34:48 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	while (current)
 	{
 		next = current->next;
-		del(current->content);
-		free(current);
+		ft_lstdelone(current, del);
 		current = next;
 	}
 	*lst = NULL;
